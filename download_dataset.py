@@ -51,7 +51,8 @@ def main():
             progress.start()
         progress.update(min(count * blockSize, totalSize))
 
-    urllib.urlretrieve(uri, fd.name, reporthook = update)
+    
+    urllib.request.urlretrieve(uri, fd.name, reporthook = update) #changed to python 3 style
     if dataset == 'zinc12':
         df = pandas.read_csv(fd.name, delimiter = '\t')
         df = df.rename(columns={'SMILES':'structure'})
